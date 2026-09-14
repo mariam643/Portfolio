@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariam Elmahlawy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0D151E;
+    --surface: #141F2B;
+    --surface-2: #1B2833;
+    --line: #26333F;
+    --text: #E7EAE6;
+    --text-dim: #8FA0AD;
+    --accent: #47A79A;
+    --accent-dim: #2F5E58;
+    --warn: #D98C3F;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  h1,h2,h3, .display{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .mono{ font-family: 'JetBrains Mono', monospace; }
+  a{ color: inherit; }
+  .wrap{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* Nav */
+  nav{
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(13,21,30,0.88);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height: 62px;
+  }
+  .nav-id{ font-family:'Space Grotesk'; font-size:15px; font-weight:500; }
+  .nav-id span{ color: var(--accent); }
+  .nav-links{ display:flex; gap: 28px; list-style:none; }
+  .nav-links a{
+    font-size: 14px; color: var(--text-dim); text-decoration:none;
+    transition: color .15s ease;
+  }
+  .nav-links a:hover{ color: var(--text); }
+  .menu-btn{ display:none; background:none; border:1px solid var(--line); color:var(--text); width:38px; height:38px; border-radius:4px; }
+
+  /* Hero */
+  header.hero{
+    padding: 96px 0 88px;
+    border-bottom: 1px solid var(--line);
+  }
+  .kicker{
+    display:flex; align-items:center; gap:10px;
+    font-size: 13px; color: var(--accent);
+    margin-bottom: 22px;
+  }
+  .kicker .dot{
+    width:7px; height:7px; border-radius:50%;
+    background: var(--accent);
+    animation: blink 1.6s ease-in-out infinite;
+  }
+  @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.25;} }
+  h1.name{
+    font-size: 48px;
+    line-height: 1.12;
+    max-width: 11ch;
+  }
+  .role{
+    margin-top: 18px;
+    font-size: 19px;
+    color: var(--text-dim);
+    max-width: 46ch;
+  }
+  .hero-meta{
+    margin-top: 40px;
+    display:flex; gap: 32px; flex-wrap: wrap;
+  }
+  .hero-meta div{ font-size: 13px; color: var(--text-dim); }
+  .hero-meta strong{ display:block; color: var(--text); font-size:15px; font-weight:500; margin-bottom:2px; }
+  .hero-cta{
+    margin-top: 44px;
+    display:flex; gap: 14px; flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-decoration:none;
+    border: 1px solid var(--line);
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .btn.primary{
+    background: var(--accent);
+    color: #06211D;
+    border-color: var(--accent);
+    font-weight: 500;
+  }
+  .btn.primary:hover{ background: #59B8AB; }
+  .btn.ghost:hover{ border-color: var(--accent); color: var(--accent); }
+
+  section{ padding: 80px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .section-head{
+    display:flex; align-items:baseline; gap:14px;
+    margin-bottom: 40px;
+  }
+  .section-num{ font-family:'JetBrains Mono'; font-size:13px; color: var(--accent); }
+  h2{ font-size: 26px; }
+
+  /* About */
+  .about-grid{ display:block; }
+  .about-grid p{ color: var(--text-dim); font-size: 16px; max-width: 62ch; }
+  .about-grid p + p{ margin-top: 16px; }
+
+  /* Skills */
+  .skills-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .skill-card{
+    background: var(--surface);
+    padding: 26px 22px;
+  }
+  .skill-card h3{ font-size: 15px; font-weight:500; margin-bottom: 8px; }
+  .skill-card p{ font-size: 13.5px; color: var(--text-dim); }
+
+  /* Projects */
+  .project-list{ display:flex; flex-direction:column; gap: 16px; }
+  .project-card{
+    display:block; text-decoration:none; color: inherit;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 26px 28px;
+    transition: border-color .15s ease;
+  }
+  .project-card:hover{ border-color: var(--accent); }
+  .project-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .project-top h3{ font-size: 17px; font-weight: 500; }
+  .proj-arrow{ font-style:normal; color: var(--accent); font-size: 18px; }
+  .project-card p{ margin-top: 12px; font-size: 14.5px; color: var(--text-dim); max-width: 62ch; }
+  .project-tags{ margin-top: 16px; display:flex; gap: 10px; flex-wrap: wrap; }
+  .project-tags span{
+    font-family:'JetBrains Mono'; font-size: 12px; color: var(--accent);
+    border: 1px solid var(--accent-dim); border-radius: 4px; padding: 4px 9px;
+  }
+
+  /* Experience */
+  .exp-item{
+    display:grid; grid-template-columns: 130px 1fr; gap: 28px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+  }
+  .exp-list .exp-item:last-child{ border-bottom: 1px solid var(--line); }
+  .exp-date{ font-family:'JetBrains Mono'; font-size: 13px; color: var(--text-dim); }
+  .exp-item h3{ font-size: 17px; font-weight: 500; }
+  .exp-item .org{ font-size: 14px; color: var(--accent); margin-top: 2px; margin-bottom: 10px; }
+  .exp-item p{ font-size: 14.5px; color: var(--text-dim); max-width: 56ch; }
+  .exp-note{
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--warn);
+    border: 1px dashed var(--warn);
+    display:inline-block;
+    padding: 6px 10px;
+    border-radius: 4px;
+  }
+
+  /* Contact */
+  footer{ padding: 80px 0 60px; }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap: 32px;
+  }
+  footer h2{ font-size: 30px; max-width: 14ch; }
+  .contact-links{ display:flex; flex-direction:column; gap: 10px; align-items:flex-start; }
+  .contact-links a{ font-size: 15px; text-decoration:none; color: var(--text-dim); border-bottom:1px solid transparent; }
+  .contact-links a:hover{ color: var(--accent); border-color: var(--accent); }
+  .foot-note{ margin-top: 56px; font-size: 12.5px; color: var(--text-dim); border-top: 1px solid var(--line); padding-top: 24px; }
+
+  @media (max-width: 760px){
+    .nav-links{ display:none; }
+    h1.name{ font-size: 34px; }
+    .about-grid{ grid-template-columns: 1fr; gap: 32px; }
+    .skills-grid{ grid-template-columns: 1fr 1fr; }
+    .exp-item{ grid-template-columns: 1fr; gap: 6px; }
+    footer .wrap{ flex-direction:column; align-items:flex-start; }
+  }
+  @media (max-width: 480px){
+    .skills-grid{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1 class="name">Mariam Elmahlawy</h1>
+    <p class="role"> SOC Engineer</p>
+    <div class="hero-meta">
+      <div><strong>Education</strong>Faculty of Computers &amp; Data Science, Alexandria University</div>
+      <div><strong>Track</strong>2024 – 2027</div>
+      <div><strong>Based in</strong>Egypt</div>
+    </div>
+    <div class="hero-cta">
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn ghost" href="mailto:mariamahmad2006355@gmail.com">Email directly</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num mono">01</span><h2>About</h2></div>
+    <div class="about-grid single">
+      <p>I'm in cybersecurity path, studying computer science and data science at Alexandria University, with a growing focus on the SOC side of security: monitoring, log analysis, and incident response. I've built on that through the DEPI incident response track and the ITI cybersecurity summer camp, alongside coursework in networking and Linux.</p>
+      <p>I learn by doing — coursework, self-directed study, and hands-on labs — and I'm looking for an internship where I can apply what I've learned so far in a real security team, take direction well, and grow quickly.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num mono">02</span><h2>Skills</h2></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Python</h3>
+        <p>Scripting and core language fundamentals, used through coursework projects.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Java</h3>
+        <p>Object-oriented programming concepts and structure, from the Safwa program.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Linux</h3>
+        <p>Command-line fluency using it in pentesing</p>
+      </div>
+      <div class="skill-card">
+        <h3>Networking</h3>
+        <p>Core concepts of how networks are built and how data moves across them.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Splunk</h3>
+        <p>Hands-on exposure to log search, dashboards, and alert triage through the DEPI incident response track.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Wazuh</h3>
+        <p>Worked with Wazuh for host-based monitoring and alerting as part of SOC-focused training.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Incident response</h3>
+        <p>Fundamentals of the detection-to-response workflow</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num mono">03</span><h2>Projects</h2></div>
+    <div class="project-list">
+      <a class="project-card" href="https://github.com/mariam643/-Modern-Hotel-network-project" target="_blank" rel="noopener">
+        <div class="project-top">
+          <h3>Modern hotel network design &amp; implementation</h3>
+          <i class="proj-arrow">↗</i>
+        </div>
+        <p>Designed and built a three-floor enterprise network in Cisco Packet Tracer, with VLAN segmentation per department, OSPF routing, DHCP, SSH management access, NTP time sync, ACLs restricting traffic between VLANs, port security, and redundant EtherChannel links.</p>
+        <div class="project-tags">
+          <span>Cisco Packet Tracer</span>
+          <span>VLANs / OSPF</span>
+          <span>ACLs</span>
+          <span>Network security</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num mono">04</span><h2>Experience</h2></div>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div class="exp-date mono">2024</div>
+        <div>
+          <h3>Incident response track</h3>
+          <div class="org">DEPI — Digital Egypt Pioneers Initiative</div>
+          <p>Training track focused on incident response fundamentals — the detection-to-response workflow, log monitoring, and hands-on practice with SIEM tools including Splunk and Wazuh.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date mono">2024</div>
+        <div>
+          <h3>Cybersecurity summer camp</h3>
+          <div class="org">ITI — Information Technology Institute</div>
+          <p>Intensive summer program covering core cybersecurity concepts and practical exercises alongside other early-career security students.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date mono">Sep 2024</div>
+        <div>
+          <h3>Internship</h3>
+          <div class="org">CIB Bank</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's talk about an internship.</h2>
+    <div class="contact-links">
+      <a href="mailto:mariamahmad2006355@gmail.com">Email</a>
+      <a href="www.linkedin.com/in/mariam-ahmad-19b3652b5" onclick="return false;">LinkedIn </a>
+      <a href="https://github.com/mariam643" onclick="return false;">GitHub</a>
+    </div>
+  </div>
+  <div class="wrap foot-note">Mariam Elmahlawy · Cybersecurity student, Alexandria University</div>
+</footer>
+
+</body>
+</html>
