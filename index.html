@@ -9,15 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0D151E;
-    --surface: #141F2B;
-    --surface-2: #1B2833;
-    --line: #26333F;
-    --text: #E7EAE6;
-    --text-dim: #8FA0AD;
-    --accent: #47A79A;
-    --accent-dim: #2F5E58;
-    --warn: #D98C3F;
+    --bg: #0B1628;
+    --surface: #112040;
+    --surface-2: #172C54;
+    --line: #1E3A6E;
+    --text: #F0F4FF;
+    --text-dim: #8BACD8;
+    --accent: #38C9E8;
+    --accent-dim: #1A5A6E;
+    --warn: #F5A623;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -81,7 +81,7 @@
   h1.name{
     font-size: 48px;
     line-height: 1.12;
-    max-width: 11ch;
+    white-space: nowrap;
   }
   .role{
     margin-top: 18px;
@@ -110,11 +110,11 @@
   }
   .btn.primary{
     background: var(--accent);
-    color: #06211D;
+    color: #071925;
     border-color: var(--accent);
     font-weight: 500;
   }
-  .btn.primary:hover{ background: #59B8AB; }
+  .btn.primary:hover{ background: #5ED9F2; }
   .btn.ghost:hover{ border-color: var(--accent); color: var(--accent); }
 
   section{ padding: 80px 0; border-bottom: 1px solid var(--line); }
@@ -244,8 +244,9 @@
   <div class="wrap">
     <div class="section-head"><span class="section-num mono">01</span><h2>About</h2></div>
     <div class="about-grid single">
-      <p>I'm in cybersecurity path, studying computer science and data science at Alexandria University, with a growing focus on the SOC side of security: monitoring, log analysis, and incident response. I've built on that through the DEPI incident response track and the ITI cybersecurity summer camp, alongside coursework in networking and Linux.</p>
-      <p>I learn by doing — coursework, self-directed study, and hands-on labs — and I'm looking for an internship where I can apply what I've learned so far in a real security team, take direction well, and grow quickly.</p>
+      <p>Driven by a passion for cybersecurity, I specialize in SOC work — log analysis, threat monitoring, and incident response. I take a methodical, hands-on approach to security operations, building my skills through labs, independent research, and direct work with industry tools.</p>
+      <p>My experience spans the full detection-to-response workflow, with hands-on work in Splunk, Wazuh, and Linux, backed by a solid foundation in networking. I've applied that knowledge in practice — including designing and implementing a full enterprise network with VLAN segmentation, OSPF routing, and security controls in Cisco Packet Tracer.</p>
+      <p>I focus on turning raw log data into actionable insight, and I'm always pushing to go deeper — whether that's analyzing attack techniques or sharpening my detection logic.</p>
     </div>
   </div>
 </section>
