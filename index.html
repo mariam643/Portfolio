@@ -2,31 +2,40 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mariam Elmahlawy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mariam Elmahlawy — SOC Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0B1628;
-    --surface: #112040;
-    --surface-2: #172C54;
-    --line: #1E3A6E;
-    --text: #F0F4FF;
-    --text-dim: #8BACD8;
-    --accent: #38C9E8;
-    --accent-dim: #1A5A6E;
-    --warn: #F5A623;
+    --bg: #0A0E1B;
+    --surface: #111A2E;
+    --surface-2: #16213A;
+    --line: #24365E;
+    --text: #EEF3FF;
+    --text-dim: #7E93C2;
+    --cyan: #26E5FF;
+    --magenta: #FF3F8E;
+    --lime: #C6FF3D;
+    --cyan-dim: #143244;
+    --magenta-dim: #3A1230;
+    --lime-dim: #263617;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; scroll-padding-top: 70px;}
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior:auto !important; }
+  }
   body{
     background: var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     font-size: 16px;
+    overflow-x: hidden;
   }
   h1,h2,h3, .display{
     font-family: 'Space Grotesk', sans-serif;
@@ -36,173 +45,245 @@
   .mono{ font-family: 'JetBrains Mono', monospace; }
   a{ color: inherit; }
   .wrap{
-    max-width: 920px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 0 28px;
   }
 
   /* Nav */
   nav{
-    position: sticky; top: 0; z-index: 20;
-    background: rgba(13,21,30,0.88);
-    backdrop-filter: blur(6px);
+    position: sticky; top: 0; z-index: 30;
+    background: rgba(10,14,27,0.85);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--line);
+    padding-top: env(safe-area-inset-top, 0px);
   }
   nav .wrap{
     display:flex; align-items:center; justify-content:space-between;
     height: 62px;
   }
-  .nav-id{ font-family:'Space Grotesk'; font-size:15px; font-weight:500; }
-  .nav-id span{ color: var(--accent); }
-  .nav-links{ display:flex; gap: 28px; list-style:none; }
+  .nav-id{ font-family:'Space Grotesk'; font-size:15px; font-weight:600; }
+  .nav-id span{ color: var(--magenta); }
+  .nav-links{ display:flex; gap: 30px; list-style:none; }
   .nav-links a{
     font-size: 14px; color: var(--text-dim); text-decoration:none;
     transition: color .15s ease;
+    position: relative;
+    padding-bottom: 2px;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; right:0; bottom:-4px; height:2px;
+    background: var(--cyan); transform: scaleX(0); transform-origin:left;
+    transition: transform .2s ease;
   }
   .nav-links a:hover{ color: var(--text); }
-  .menu-btn{ display:none; background:none; border:1px solid var(--line); color:var(--text); width:38px; height:38px; border-radius:4px; }
+  .nav-links a.active{ color: var(--cyan); }
+  .nav-links a.active::after{ transform: scaleX(1); }
+  .menu-btn{ display:none; background:none; border:1px solid var(--line); color:var(--text); width:38px; height:38px; border-radius:6px; font-size:18px; cursor:pointer; }
+  .mobile-panel{ display:none; }
 
   /* Hero */
   header.hero{
-    padding: 96px 0 88px;
+    padding: 88px 0 60px;
     border-bottom: 1px solid var(--line);
   }
+  .hero-grid{ display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items:center; }
   .kicker{
     display:flex; align-items:center; gap:10px;
-    font-size: 13px; color: var(--accent);
-    margin-bottom: 22px;
+    font-size: 13px; color: var(--lime);
+    margin-bottom: 20px;
   }
   .kicker .dot{
     width:7px; height:7px; border-radius:50%;
-    background: var(--accent);
+    background: var(--lime);
+    box-shadow: 0 0 8px var(--lime);
     animation: blink 1.6s ease-in-out infinite;
   }
   @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.25;} }
   h1.name{
-    font-size: 48px;
+    font-size: 44px;
     line-height: 1.12;
-    white-space: nowrap;
+    background: linear-gradient(100deg, var(--text) 40%, var(--cyan) 70%, var(--magenta) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
   }
   .role{
-    margin-top: 18px;
-    font-size: 19px;
+    margin-top: 16px;
+    font-size: 18px;
     color: var(--text-dim);
     max-width: 46ch;
+    min-height: 24px;
   }
+  .role .cursor{ display:inline-block; width:8px; background:var(--cyan); margin-left:2px; animation: blink 0.9s step-end infinite; }
   .hero-meta{
-    margin-top: 40px;
-    display:flex; gap: 32px; flex-wrap: wrap;
+    margin-top: 34px;
+    display:flex; gap: 28px; flex-wrap: wrap;
   }
   .hero-meta div{ font-size: 13px; color: var(--text-dim); }
-  .hero-meta strong{ display:block; color: var(--text); font-size:15px; font-weight:500; margin-bottom:2px; }
+  .hero-meta strong{ display:block; color: var(--text); font-size:14.5px; font-weight:500; margin-bottom:2px; }
   .hero-cta{
-    margin-top: 44px;
+    margin-top: 38px;
     display:flex; gap: 14px; flex-wrap: wrap;
   }
   .btn{
     display:inline-flex; align-items:center; gap:8px;
     padding: 12px 20px;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 14px;
     text-decoration:none;
     border: 1px solid var(--line);
-    transition: border-color .15s ease, background .15s ease;
+    transition: border-color .15s ease, background .15s ease, transform .15s ease;
+    cursor: pointer;
+    font-family: inherit;
   }
   .btn.primary{
-    background: var(--accent);
-    color: #071925;
-    border-color: var(--accent);
-    font-weight: 500;
+    background: var(--magenta);
+    color: #180814;
+    border-color: var(--magenta);
+    font-weight: 600;
   }
-  .btn.primary:hover{ background: #5ED9F2; }
-  .btn.ghost:hover{ border-color: var(--accent); color: var(--accent); }
+  .btn.primary:hover{ background: #FF6BA8; transform: translateY(-1px); }
+  .btn.ghost{ color: var(--text); background: transparent; }
+  .btn.ghost:hover{ border-color: var(--cyan); color: var(--cyan); }
 
-  section{ padding: 80px 0; border-bottom: 1px solid var(--line); }
+  /* Radar visual */
+  .radar-wrap{ display:flex; justify-content:center; }
+  .radar{
+    position: relative;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, var(--surface-2) 0%, var(--surface) 70%, var(--bg) 100%);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .radar::before{
+    content:''; position:absolute; inset:0; border-radius:50%;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(38,229,255,0.35) 25deg, transparent 55deg);
+    animation: sweep 4s linear infinite;
+  }
+  @keyframes sweep{ to{ transform: rotate(360deg); } }
+  .radar-ring{ position:absolute; border:1px solid var(--line); border-radius:50%; }
+  .r1{ inset: 20%; } .r2{ inset: 40%; } .r3{ inset: 60%; }
+  .radar-cross{ position:absolute; background: var(--line); }
+  .rc-h{ left:0; right:0; top:50%; height:1px; } .rc-v{ top:0; bottom:0; left:50%; width:1px; }
+  .blip{
+    position:absolute; width:8px; height:8px; border-radius:50%;
+    box-shadow: 0 0 10px currentColor;
+    animation: blip-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes blip-pulse{ 0%,100%{ opacity:.4; transform:scale(0.9);} 50%{ opacity:1; transform:scale(1.15);} }
+
+  /* Ticker */
+  .ticker-bar{
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+  }
+  .ticker-track{
+    display:inline-flex; gap: 48px;
+    animation: ticker 26s linear infinite;
+  }
+  @keyframes ticker{ from{ transform: translateX(0);} to{ transform: translateX(-50%);} }
+  .ticker-item{ font-family:'JetBrains Mono'; font-size: 12.5px; color: var(--text-dim); display:inline-flex; align-items:center; gap:8px; }
+  .sev{ font-weight:600; padding: 1px 7px; border-radius: 3px; font-size: 11px; }
+  .sev.info{ background: var(--cyan-dim); color: var(--cyan); }
+  .sev.crit{ background: var(--magenta-dim); color: var(--magenta); }
+  .sev.ok{ background: var(--lime-dim); color: var(--lime); }
+
+  section{ padding: 76px 0; border-bottom: 1px solid var(--line); }
   section:last-of-type{ border-bottom:none; }
   .section-head{
     display:flex; align-items:baseline; gap:14px;
-    margin-bottom: 40px;
+    margin-bottom: 38px;
   }
-  .section-num{ font-family:'JetBrains Mono'; font-size:13px; color: var(--accent); }
-  h2{ font-size: 26px; }
+  .section-num{ font-family:'JetBrains Mono'; font-size:13px; color: var(--magenta); }
+  h2{ font-size: 25px; }
 
   /* About */
-  .about-grid{ display:block; }
-  .about-grid p{ color: var(--text-dim); font-size: 16px; max-width: 62ch; }
+  .about-grid p{ color: var(--text-dim); font-size: 16px; max-width: 64ch; }
   .about-grid p + p{ margin-top: 16px; }
 
   /* Skills */
   .skills-grid{
-    display:grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
   }
   .skill-card{
     background: var(--surface);
-    padding: 26px 22px;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent-c, var(--cyan));
+    border-radius: 6px;
+    padding: 22px 20px;
+    transition: transform .15s ease, border-color .15s ease;
   }
-  .skill-card h3{ font-size: 15px; font-weight:500; margin-bottom: 8px; }
-  .skill-card p{ font-size: 13.5px; color: var(--text-dim); }
+  .skill-card:hover{ transform: translateY(-3px); }
+  .skill-card h3{ font-size: 15px; font-weight:500; margin-bottom: 6px; }
+  .skill-card p{ font-size: 13.5px; color: var(--text-dim); margin-bottom: 12px; }
+  .skill-bar{ height:4px; border-radius:2px; background: var(--surface-2); overflow:hidden; }
+  .skill-bar span{ display:block; height:100%; border-radius:2px; background: var(--accent-c, var(--cyan)); }
 
   /* Projects */
   .project-list{ display:flex; flex-direction:column; gap: 16px; }
   .project-card{
-    display:block; text-decoration:none; color: inherit;
+    display:flex; gap: 22px; align-items:flex-start; text-decoration:none; color: inherit;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 26px 28px;
-    transition: border-color .15s ease;
+    transition: border-color .15s ease, transform .15s ease;
   }
-  .project-card:hover{ border-color: var(--accent); }
+  .project-card:hover{ border-color: var(--cyan); transform: translateY(-2px); }
+  .proj-icon{ flex: none; width:52px; height:52px; }
   .project-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
   .project-top h3{ font-size: 17px; font-weight: 500; }
-  .proj-arrow{ font-style:normal; color: var(--accent); font-size: 18px; }
-  .project-card p{ margin-top: 12px; font-size: 14.5px; color: var(--text-dim); max-width: 62ch; }
+  .proj-arrow{ font-style:normal; color: var(--magenta); font-size: 18px; }
+  .project-card p{ margin-top: 12px; font-size: 14.5px; color: var(--text-dim); max-width: 60ch; }
   .project-tags{ margin-top: 16px; display:flex; gap: 10px; flex-wrap: wrap; }
   .project-tags span{
-    font-family:'JetBrains Mono'; font-size: 12px; color: var(--accent);
-    border: 1px solid var(--accent-dim); border-radius: 4px; padding: 4px 9px;
+    font-family:'JetBrains Mono'; font-size: 12px; color: var(--lime);
+    border: 1px solid var(--lime-dim); border-radius: 4px; padding: 4px 9px;
   }
 
   /* Experience */
   .exp-item{
     display:grid; grid-template-columns: 130px 1fr; gap: 28px;
-    padding: 28px 0;
+    padding: 26px 0 26px 20px;
     border-top: 1px solid var(--line);
+    position: relative;
+  }
+  .exp-item::before{
+    content:''; position:absolute; left:0; top:34px; width:9px; height:9px; border-radius:50%;
+    background: var(--dot-c, var(--cyan)); box-shadow: 0 0 8px var(--dot-c, var(--cyan));
   }
   .exp-list .exp-item:last-child{ border-bottom: 1px solid var(--line); }
   .exp-date{ font-family:'JetBrains Mono'; font-size: 13px; color: var(--text-dim); }
   .exp-item h3{ font-size: 17px; font-weight: 500; }
-  .exp-item .org{ font-size: 14px; color: var(--accent); margin-top: 2px; margin-bottom: 10px; }
+  .exp-item .org{ font-size: 14px; color: var(--cyan); margin-top: 2px; margin-bottom: 10px; }
   .exp-item p{ font-size: 14.5px; color: var(--text-dim); max-width: 56ch; }
-  .exp-note{
-    margin-top: 12px;
-    font-size: 13px;
-    color: var(--warn);
-    border: 1px dashed var(--warn);
-    display:inline-block;
-    padding: 6px 10px;
-    border-radius: 4px;
-  }
 
   /* Contact */
-  footer{ padding: 80px 0 60px; }
+  footer{ padding: 76px 0 calc(56px + env(safe-area-inset-bottom, 0px)); }
   footer .wrap{
     display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap: 32px;
   }
-  footer h2{ font-size: 30px; max-width: 14ch; }
-  .contact-links{ display:flex; flex-direction:column; gap: 10px; align-items:flex-start; }
-  .contact-links a{ font-size: 15px; text-decoration:none; color: var(--text-dim); border-bottom:1px solid transparent; }
-  .contact-links a:hover{ color: var(--accent); border-color: var(--accent); }
-  .foot-note{ margin-top: 56px; font-size: 12.5px; color: var(--text-dim); border-top: 1px solid var(--line); padding-top: 24px; }
+  footer h1{ font-size: 32px; max-width: 14ch; }
+  .contact-links{ display:flex; flex-direction:column; gap: 12px; align-items:flex-start; }
+  .contact-links a, .contact-links button{ font-size: 15px; text-decoration:none; color: var(--text-dim); border-bottom:1px solid transparent; background:none; border-top:none; border-left:none; border-right:none; font-family:inherit; cursor:pointer; padding:0; text-align:left; }
+  .contact-links a:hover, .contact-links button:hover{ color: var(--magenta); border-color: var(--magenta); }
+  .foot-note{ margin-top: 52px; font-size: 12.5px; color: var(--text-dim); border-top: 1px solid var(--line); padding-top: 24px; }
 
   @media (max-width: 760px){
     .nav-links{ display:none; }
-    h1.name{ font-size: 34px; }
-    .about-grid{ grid-template-columns: 1fr; gap: 32px; }
+    .menu-btn{ display:block; }
+    .mobile-panel.open{ display:flex; flex-direction:column; gap:2px; border-bottom:1px solid var(--line); background:var(--surface); }
+    .mobile-panel.open a{ padding:14px 28px; color:var(--text-dim); text-decoration:none; font-size:14px; border-top:1px solid var(--line); }
+    h1.name{ font-size: 32px; }
+    .hero-grid{ grid-template-columns: 1fr; }
+    .radar-wrap{ order:-1; margin-bottom: 10px; }
+    .radar{ width:190px; height:190px; }
     .skills-grid{ grid-template-columns: 1fr 1fr; }
     .exp-item{ grid-template-columns: 1fr; gap: 6px; }
+    .project-card{ flex-direction:column; }
     footer .wrap{ flex-direction:column; align-items:flex-start; }
   }
   @media (max-width: 480px){
@@ -214,6 +295,7 @@
 
 <nav>
   <div class="wrap">
+    <div class="nav-id">M<span>.</span>E</div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -221,29 +303,53 @@
       <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="wrap">
-    <h1 class="name">Mariam Elmahlawy</h1>
-    <p class="role"> SOC Engineer</p>
-    <div class="hero-meta">
-      <div><strong>Education</strong>Faculty of Computers &amp; Data Science, Alexandria University</div>
-      <div><strong>Track</strong>2024 – 2027</div>
-      <div><strong>Based in</strong>Egypt</div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker"><span class="dot"></span><span class="mono">STATUS: MONITORING</span></div>
+      <h1 class="name">Mariam Elmahlawy</h1>
+      <p class="role"><span id="roleText"></span><span class="cursor"></span></p>
+      <div class="hero-meta">
+        <div><strong>Education</strong>Faculty of Computers &amp; Data Science, Alexandria University</div>
+        <div><strong>Track</strong>2024 – 2027</div>
+        <div><strong>Based in</strong>Egypt</div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="mailto:mariamahmad2006355@gmail.com">Email directly</a>
+      </div>
     </div>
-    <div class="hero-cta">
-      <a class="btn primary" href="#contact">Get in touch</a>
-      <a class="btn ghost" href="mailto:mariamahmad2006355@gmail.com">Email directly</a>
+    <div class="radar-wrap">
+      <div class="radar" id="radar">
+        <div class="radar-ring r1"></div>
+        <div class="radar-ring r2"></div>
+        <div class="radar-ring r3"></div>
+        <div class="radar-cross rc-h"></div>
+        <div class="radar-cross rc-v"></div>
+      </div>
     </div>
   </div>
 </header>
 
+<div class="ticker-bar">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
 <section id="about">
   <div class="wrap">
     <div class="section-head"><span class="section-num mono">01</span><h2>About</h2></div>
-    <div class="about-grid single">
+    <div class="about-grid">
       <p>Driven by a passion for cybersecurity, I specialize in SOC work — log analysis, threat monitoring, and incident response. I take a methodical, hands-on approach to security operations, building my skills through labs, independent research, and direct work with industry tools.</p>
       <p>My experience spans the full detection-to-response workflow, with hands-on work in Splunk, Wazuh, and Linux, backed by a solid foundation in networking. I've applied that knowledge in practice — including designing and implementing a full enterprise network with VLAN segmentation, OSPF routing, and security controls in Cisco Packet Tracer.</p>
       <p>I focus on turning raw log data into actionable insight — and I genuinely enjoy that process. Whether I'm picking apart how an attack unfolded or tightening a detection rule that kept missing something, that's the kind of work that keeps me sharp.</p>
@@ -254,32 +360,7 @@
 <section id="skills">
   <div class="wrap">
     <div class="section-head"><span class="section-num mono">02</span><h2>Skills</h2></div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h3>Python</h3>
-        <p>Scripting and core language fundamentals.</p>
-      </div>
-      <div class="skill-card">
-        <h3>Java</h3>
-        <p>Object-oriented programming concepts and structure.</p>
-      </div>
-      <div class="skill-card">
-        <h3>Linux</h3>
-        <p>Command-line fluency using it in pentesing.</p>
-      </div>
-      <div class="skill-card">
-        <h3>Networking</h3>
-        <p>Core concepts of how networks are built and how data moves across them.</p>
-      </div>
-      <div class="skill-card">
-        <h3>Splunk</h3>
-        <p>Hands-on exposure to log search, dashboards, and alert .</p>
-      </div>
-      <div class="skill-card">
-        <h3>Wazuh</h3>
-        <p>Worked with Wazuh for host-based monitoring and alerting as part of SOC-focused training.</p>
-      </div>
-    </div>
+    <div class="skills-grid" id="skillsGrid"></div>
   </div>
 </section>
 
@@ -288,16 +369,24 @@
     <div class="section-head"><span class="section-num mono">03</span><h2>Projects</h2></div>
     <div class="project-list">
       <a class="project-card" href="https://github.com/mariam643/-Modern-Hotel-network-project" target="_blank" rel="noopener">
-        <div class="project-top">
-          <h3>Modern hotel network design &amp; implementation</h3>
-          <i class="proj-arrow">↗</i>
-        </div>
-        <p>Designed and built a three-floor enterprise network in Cisco Packet Tracer, with VLAN segmentation per department, OSPF routing, DHCP, SSH management access, NTP time sync, ACLs restricting traffic between VLANs, port security, and redundant EtherChannel links.</p>
-        <div class="project-tags">
-          <span>Cisco Packet Tracer</span>
-          <span>VLANs / OSPF</span>
-          <span>ACLs</span>
-          <span>Network security</span>
+        <svg class="proj-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="10" r="5" stroke="#26E5FF" stroke-width="2"/>
+          <circle cx="10" cy="40" r="5" stroke="#FF3F8E" stroke-width="2"/>
+          <circle cx="42" cy="40" r="5" stroke="#C6FF3D" stroke-width="2"/>
+          <path d="M26 15V26M26 26L14 35M26 26L38 35" stroke="#24365E" stroke-width="2"/>
+        </svg>
+        <div>
+          <div class="project-top">
+            <h3>Modern hotel network design &amp; implementation</h3>
+            <i class="proj-arrow">↗</i>
+          </div>
+          <p>Designed and built a three-floor enterprise network in Cisco Packet Tracer, with VLAN segmentation per department, OSPF routing, DHCP, SSH management access, NTP time sync, ACLs restricting traffic between VLANs, port security, and redundant EtherChannel links.</p>
+          <div class="project-tags">
+            <span>Cisco Packet Tracer</span>
+            <span>VLANs / OSPF</span>
+            <span>ACLs</span>
+            <span>Network security</span>
+          </div>
         </div>
       </a>
     </div>
@@ -308,7 +397,7 @@
   <div class="wrap">
     <div class="section-head"><span class="section-num mono">04</span><h2>Experience</h2></div>
     <div class="exp-list">
-      <div class="exp-item">
+      <div class="exp-item" style="--dot-c:var(--magenta)">
         <div class="exp-date mono">2026</div>
         <div>
           <h3>Incident response track</h3>
@@ -316,7 +405,7 @@
           <p>Training track focused on incident response fundamentals — the detection-to-response workflow, log monitoring, and hands-on practice with SIEM tools including Splunk and Wazuh.</p>
         </div>
       </div>
-      <div class="exp-item">
+      <div class="exp-item" style="--dot-c:var(--cyan)">
         <div class="exp-date mono">2026</div>
         <div>
           <h3>Cybersecurity summer camp</h3>
@@ -324,7 +413,7 @@
           <p>Intensive summer program covering core cybersecurity concepts and practical exercises alongside other early-career security students.</p>
         </div>
       </div>
-      <div class="exp-item">
+      <div class="exp-item" style="--dot-c:var(--lime)">
         <div class="exp-date mono">Sep 2024</div>
         <div>
           <h3>Internship</h3>
@@ -337,14 +426,132 @@
 
 <footer id="contact">
   <div class="wrap">
-    <h1>Let's connect !</h1>
+    <h1>Let's turn your logs into insight — get in touch</h1>
     <div class="contact-links">
       <a href="mailto:mariamahmad2006355@gmail.com">Email</a>
       <a href="https://www.linkedin.com/in/mariam-ahmad-19b3652b5" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/mariam643" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://wa.me/qr/KUAX3IH3UJYQA1" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
+  <div class="wrap foot-note">© 2026 Mariam Elmahlawy. Built for SOC work, log by log.</div>
 </footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobilePanel = document.getElementById('mobilePanel');
+  menuBtn.addEventListener('click', () => {
+    mobilePanel.classList.toggle('open');
+    menuBtn.textContent = mobilePanel.classList.contains('open') ? '✕' : '☰';
+  });
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobilePanel.classList.remove('open');
+    menuBtn.textContent = '☰';
+  }));
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section, header.hero');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const map = { about:'About', skills:'Skills', projects:'Projects', experience:'Experience', contact:'Contact' };
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        navLinks.forEach(l => l.classList.remove('active'));
+        const match = document.querySelector('.nav-links a[href="#' + e.target.id + '"]');
+        if(match) match.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => obs.observe(s));
+
+  // Typewriter role text
+  const roles = ['SOC Engineer', 'Log Analyst', 'Threat Monitor', 'Incident Responder'];
+  const roleEl = document.getElementById('roleText');
+  let ri = 0, ci = 0, deleting = false;
+  function typeLoop(){
+    const current = roles[ri];
+    if(!deleting){
+      ci++;
+      roleEl.textContent = current.slice(0, ci);
+      if(ci === current.length){ deleting = true; setTimeout(typeLoop, 1400); return; }
+    } else {
+      ci--;
+      roleEl.textContent = current.slice(0, ci);
+      if(ci === 0){ deleting = false; ri = (ri+1) % roles.length; }
+    }
+    setTimeout(typeLoop, deleting ? 40 : 70);
+  }
+  typeLoop();
+
+  // Radar blips
+  const radar = document.getElementById('radar');
+  const blipColors = ['#26E5FF', '#FF3F8E', '#C6FF3D'];
+  function placeBlips(){
+    radar.querySelectorAll('.blip').forEach(b => b.remove());
+    for(let i=0;i<4;i++){
+      const b = document.createElement('div');
+      b.className = 'blip';
+      const angle = Math.random()*2*Math.PI;
+      const dist = 20 + Math.random()*32;
+      b.style.left = (50 + Math.cos(angle)*dist) + '%';
+      b.style.top = (50 + Math.sin(angle)*dist) + '%';
+      b.style.color = blipColors[i % blipColors.length];
+      b.style.background = blipColors[i % blipColors.length];
+      b.style.animationDelay = (Math.random()*2) + 's';
+      radar.appendChild(b);
+    }
+  }
+  placeBlips();
+  setInterval(placeBlips, 4000);
+
+  // Ticker
+  const alerts = [
+    {sev:'crit', text:'Multiple failed SSH logins — 10.0.4.12'},
+    {sev:'info', text:'New Splunk search head deployed'},
+    {sev:'ok', text:'Wazuh agent reconnected — host WKS-014'},
+    {sev:'crit', text:'Suspicious outbound traffic flagged'},
+    {sev:'info', text:'OSPF adjacency established — R2 ↔ R3'},
+    {sev:'ok', text:'Alert triaged and closed — false positive'},
+  ];
+  const track = document.getElementById('tickerTrack');
+  function renderTicker(list){
+    return list.map(a => `<span class="ticker-item"><span class="sev ${a.sev}">${a.sev.toUpperCase()}</span>${a.text}</span>`).join('');
+  }
+  track.innerHTML = renderTicker(alerts) + renderTicker(alerts);
+
+  // Skills data + render
+  const skillColors = ['var(--cyan)', 'var(--magenta)', 'var(--lime)'];
+  const skills = [
+    {name:'Python', desc:'Scripting and core language fundamentals.', level:70},
+    {name:'Java', desc:'Object-oriented programming concepts and structure.', level:55},
+    {name:'Linux', desc:'Command-line fluency, used in pentesting.', level:75},
+    {name:'Networking', desc:'How networks are built and how data moves across them.', level:80},
+    {name:'Splunk', desc:'Hands-on log search, dashboards, and alerting.', level:70},
+    {name:'Wazuh', desc:'Host-based monitoring and alerting for SOC training.', level:65},
+  ];
+  const grid = document.getElementById('skillsGrid');
+  grid.innerHTML = skills.map((s,i) => {
+    const c = skillColors[i % skillColors.length];
+    return `<div class="skill-card" style="--accent-c:${c}">
+      <h3>${s.name}</h3>
+      <p>${s.desc}</p>
+      <div class="skill-bar"><span style="width:${s.level}%"></span></div>
+    </div>`;
+  }).join('');
+
+  // Copy email
+  const copyBtn = document.getElementById('copyEmailBtn');
+  copyBtn.addEventListener('click', async () => {
+    try{
+      await navigator.clipboard.writeText('mariamahmad2006355@gmail.com');
+      copyBtn.textContent = 'Copied to clipboard ✓';
+      setTimeout(() => copyBtn.textContent = 'mariamahmad2006355@gmail.com — click to copy', 1800);
+    }catch(e){
+      window.location.href = 'mailto:mariamahmad2006355@gmail.com';
+    }
+  });
+</script>
 
 </body>
 </html>
